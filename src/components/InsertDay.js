@@ -9,7 +9,7 @@ export default function InsertDay() {
   const [days, setDays] = useState([]); //useState(기본값을 넣어서 사용한다.)
   //빈배열이 있을 때 무한 루프로 안빠지게 하는 모듈
   useEffect(() => {
-    axios.get("http://127.0.0.1:8099/days").then((res) => {
+    axios.get("https://prk-vocaapp.herokuapp.com/days").then((res) => {
       setDays(res.data);
     });
   }, []);
@@ -19,7 +19,7 @@ export default function InsertDay() {
     //
     //setDays(days + 1);
     //값을 추가할 때는 post
-    axios.post("http://127.0.0.1:8099/day/add", { day: days.length + 1 }).then((res) => {
+    axios.post("https://prk-vocaapp.herokuapp.com/day/add", { day: days.length + 1 }).then((res) => {
       if (res.data.insert === "ok") {
         alert("day가 추가되었습니다.");
         navigate("/");
